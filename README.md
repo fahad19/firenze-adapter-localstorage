@@ -25,7 +25,7 @@ $ npm install --save firenze-adapter-memory
 ## Install
 
 ```
-$ npm install --save firenze-adapter-mysql
+$ npm install --save firenze-adapter-memory
 ```
 
 ## Usage
