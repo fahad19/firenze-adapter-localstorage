@@ -30,12 +30,10 @@ $ npm install --save firenze-adapter-memory
 
 ## Usage
 
-You aren't expected to deal with the Adapter directly. Just pass the adapter to Database config when you create an instance.
-
 ```js
 var f = require('firenze');
 var Database = f.Database;
-var MemoeyAdapter = require('firenze-adapter-memory');
+var MemoryAdapter = require('firenze-adapter-memory');
 
 var db = new Database({
   adapter: MemoryAdapter
