@@ -1,0 +1,31 @@
+{
+  "name": "firenze-adapter-memory",
+  "main": "dist/firenze-adapter-memory.min.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/fahad19/firenze-adapter-memory",
+  "authors": [
+    "Fahad Ibnay Heylaal"
+  ],
+  "description": "Memory adapter for firenze.js ORM",
+  "keywords": [
+    "orm",
+    "adapters",
+    "firenze-adapter",
+    "firenze-plugin",
+    "database",
+    "memory"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "async": "^0.9.0",
+    "firenze": "^0.1.2",
+    "lodash": "^3.7.0"
+  }
+}
