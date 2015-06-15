@@ -224,7 +224,7 @@ export default class Memory extends Adapter {
         return r[q.primaryKey] === id;
       });
       this.data[q.table].splice(k, 1);
-      return resolve(true);
+      return resolve(1);
     });
   }
 }
