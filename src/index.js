@@ -1,8 +1,10 @@
 /* eslint-disable new-cap */
 
 import _ from 'lodash';
-import P from 'firenze/lib/Promise';
+import f from 'firenze';
 import async from 'async';
+
+let P = f.Promise;
 
 import Adapter from 'firenze/lib/Adapter';
 
@@ -47,7 +49,7 @@ import Adapter from 'firenze/lib/Adapter';
 //
 // <script>
 // var db = new firenze.Database({
-//   adapter: new firenze.MemoryAdapter()
+//   adapter: new FirenzeMemoryAdapter()
 // });
 // </script>
 // ```

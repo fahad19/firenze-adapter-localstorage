@@ -11,7 +11,10 @@
     "test": "run-scripts lint babel mocha",
     "doctoc": "doctoc README.md --github --title '# Contents'",
     "docume": "docume README.md",
-    "docs": "npm run docume && npm run doctoc"
+    "docs": "npm run docume && npm run doctoc",
+    "dist:lib": "webpack --config ./dist/firenze-adapter-memory.config.js",
+    "uglify:lib": "uglifyjs dist/firenze-adapter-memory.js -o dist/firenze-adapter-memory.min.js",
+    "dist": "run-scripts dist:lib uglify:lib"
   },
   "repository": {
     "type": "git",
@@ -48,8 +51,11 @@
     "docume": "^0.1.4",
     "eslint": "^0.20.0",
     "mocha": "^2.2.4",
+    "node-libs-browser": "^0.5.2",
     "run-scripts": "^0.2.2",
     "should": "^6.0.1",
-    "should-promised": "^0.2.1"
+    "should-promised": "^0.2.1",
+    "uglify-js": "^2.4.23",
+    "webpack": "^1.9.11"
   }
 }

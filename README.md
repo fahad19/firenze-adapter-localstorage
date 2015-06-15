@@ -73,7 +73,7 @@ var db = new Database({
 
 <script>
 var db = new firenze.Database({
-  adapter: new firenze.MemoryAdapter()
+  adapter: new FirenzeMemoryAdapter()
 });
 </script>
 ```
