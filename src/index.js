@@ -8,11 +8,21 @@ import Adapter from 'firenze/lib/Adapter';
 
 // ## Install
 //
+// With [npm](https://npmjs.com):
+//
 // ```
 // $ npm install --save firenze-adapter-memory
 // ```
 //
+// Or [Bower](http://bower.io):
+//
+// ```
+// $ bower installl --save firenze-adapter-memory
+// ```
+//
 // ## Usage
+//
+// ### Node.js
 //
 // ```js
 // var f = require('firenze');
@@ -22,6 +32,24 @@ import Adapter from 'firenze/lib/Adapter';
 // var db = new Database({
 //   adapter: MemoryAdapter
 // });
+// ```
+//
+// ### Browser
+//
+// ```js
+// <script src="bower_components/lodash/lodash.min.js"></script>
+// <script src="bower_components/async/lib/async.js"></script>
+// <script src="bower_components/bluebird/js/browser/bluebird.min.js"></script>
+// <script src="bower_components/validator-js/validator.min.js"></script>
+//
+// <script src="bower_components/firenze/dist/firenze.min.js"></script>
+// <script src="bower_components/firenze-adapter-memory/dist/firenze-adapter-memory.min.js"></script>
+//
+// <script>
+// var db = new firenze.Database({
+//   adapter: new firenze.MemoryAdapter()
+// });
+// </script>
 // ```
 //
 export default class Memory extends Adapter {
@@ -97,6 +125,74 @@ export default class Memory extends Adapter {
           let records = this.data[q.table];
           return cb(null, records);
         },
+// ## Finders
+//
+// Examples below assumes you have an instance of Collection already:
+//
+// ```js
+// var posts = new Posts();
+// ```
+//
+// ### first
+//
+// Gives you the first matched result:
+//
+// ```js
+// posts.find('first', {
+//   conditions: {
+//     id: 1
+//   }
+// }).then(function (post) {
+//   // post is now an instance of Post model
+//   var title = post.get('title');
+// });
+// ```
+//
+// ### all
+//
+// Gives you all matched results:
+//
+// ```js
+// posts.find('all', {
+//   conditions: {
+//     published: true
+//   }
+// }).then(function (models) {
+//   models.forEach(function (model) {
+//     var title = model.get('title');
+//   });
+// });
+// ```
+// ### list
+//
+// Gives you a list of key/value paired object of matched results:
+//
+// ```js
+// posts.find('list', {
+//   fields: [
+//     'id',
+//     'title'
+//   ]
+// }).then(function (list) {
+//   // list is now:
+//   //
+//   // {
+//   //   1: 'Hello World',
+//   //   2: 'About'
+//   // }
+// });
+// ```
+//
+// ### count
+//
+// Gives you the total count of matched results:
+//
+// ```js
+// posts.find('count').then(function (count) {
+//   // count is an integer here
+// });
+// ```
+//
         (records, cb) => {
           // conditions
           if (!q.conditions) {
@@ -114,6 +210,18 @@ export default class Memory extends Adapter {
           let filtered = _.filter(records, _.matches(conditions));
           return cb(null, filtered);
         },
+// ## Order
+//
+// For ordering results:
+//
+// ```js
+// posts.find('all', {
+//   order: {
+//     'Post.title': 'asc'
+//   }
+// });
+// ```
+//
         (records, cb) => {
           // sort
           if (!q.order) {
@@ -150,6 +258,25 @@ export default class Memory extends Adapter {
           let sorted = _.sortByOrder(records, sortFields, sortOrders);
           return cb(null, sorted);
         },
+// ## Limit (pagination)
+//
+// Limit number of results:
+//
+// ```js
+// posts.find('all', {
+//   limit: 10
+// });
+// ```
+//
+// If you want to go through paginated results:
+//
+// ```js
+// posts.find('all', {
+//   limit: 10,
+//   page: 2
+// })
+// ```
+//
         (records, cb) => {
           // limit
           let page = q.page ? q.page : 1;
@@ -164,6 +291,19 @@ export default class Memory extends Adapter {
           let limited = records.slice(from, to);
           return cb(null, limited);
         },
+// ## Fields
+//
+// Select only a number of fields:
+//
+// ```js
+// posts.find('all', {
+//   fields: [
+//     'id',
+//     'title'
+//   ]
+// });
+// ```
+//
         (records, cb) => {
           // fields
           if (!_.isArray(q.fields)) {
