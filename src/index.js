@@ -5,8 +5,7 @@ import f from 'firenze';
 import async from 'async';
 
 let P = f.Promise;
-
-import Adapter from 'firenze/lib/Adapter';
+let Adapter = f.Adapter;
 
 // ## Install
 //
