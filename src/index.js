@@ -1,3 +1,5 @@
+/* eslint-disable new-cap */
+
 import _ from 'lodash';
 import P from 'firenze/lib/Promise';
 import async from 'async';
@@ -57,11 +59,24 @@ export default class Memory extends Adapter {
   }
 
   query(collection, options = {}) {
-    return _.merge(options, {
+    let opt =  _.merge(options, {
       table: collection.table,
       alias: collection.model().alias,
       primaryKey: collection.model().primaryKey
     });
+
+    let promise = new P((resolve, reject) => {
+      return this
+        .findRecords(opt)
+        .then((results) => {
+          return resolve(results);
+        })
+        .catch((error) => {
+          return reject(error);
+        });
+    });
+
+    return _.merge(promise, opt);
   }
 
   create(q, obj) {
@@ -71,7 +86,7 @@ export default class Memory extends Adapter {
   }
 
   read(q) {
-    return new P.resolve(this.findRecords(q));
+    return new P.resolve(q);
   }
 
   findRecords(q) {
@@ -79,7 +94,7 @@ export default class Memory extends Adapter {
       return async.waterfall([
         (cb) => {
           // all
-          let records this.data[q.table];
+          let records = this.data[q.table];
           return cb(null, records);
         },
         (records, cb) => {
@@ -111,7 +126,7 @@ export default class Memory extends Adapter {
             _.each(q.order, (v, k) => {
               order.push({
                 [k]: v
-              })
+              });
             });
           } else {
             order = q.order;
@@ -148,6 +163,28 @@ export default class Memory extends Adapter {
           let to = from + limit;
           let limited = records.slice(from, to);
           return cb(null, limited);
+        },
+        (records, cb) => {
+          // fields
+          if (!_.isArray(q.fields)) {
+            return cb(null, records);
+          }
+
+          return cb(null, _.map(records, (record) => {
+            return _.pick(record, q.fields);
+          }));
+        },
+        (records, cb) => {
+          // count
+          if (q.count) {
+            return cb(null, [
+              {
+                '*': records.length
+              }
+            ]);
+          }
+
+          return cb(null, records);
         }
       ], (err, result) => {
         if (err) {
@@ -161,7 +198,7 @@ export default class Memory extends Adapter {
 
   update(q, obj) {
     return new P((resolve, reject) => {
-      let records = this.findRecords(q);
+      let records = q;
       if (records.length === 0) {
         return reject(false);
       }
@@ -177,7 +214,7 @@ export default class Memory extends Adapter {
 
   delete(q) {
     return new P((resolve, reject) => {
-      let records = this.findRecords(q);
+      let records = q;
       if (records.length === 0) {
         return reject(false);
       }
