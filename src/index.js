@@ -198,33 +198,35 @@ export default class Memory extends Adapter {
 
   update(q, obj) {
     return new P((resolve, reject) => {
-      let records = q;
-      if (records.length === 0) {
-        return reject(false);
-      }
+      return q.then((records) => {
+        if (records.length === 0) {
+          return reject(false);
+        }
 
-      let id = records[0][q.primaryKey];
-      let k = _.findIndex(this.data[q.table], (r) => {
-        return r[q.primaryKey] === id;
+        let id = records[0][q.primaryKey];
+        let k = _.findIndex(this.data[q.table], (r) => {
+          return r[q.primaryKey] === id;
+        });
+        this.data[q.table][k] = _.merge(this.data[q.table][k], obj);
+        return resolve(this.data[q.table][k]);
       });
-      this.data[q.table][k] = _.merge(this.data[q.table][k], obj);
-      return resolve(this.data[q.table][k]);
     });
   }
 
   delete(q) {
     return new P((resolve, reject) => {
-      let records = q;
-      if (records.length === 0) {
-        return reject(false);
-      }
+      return q.then((records) => {
+        if (records.length === 0) {
+          return reject(false);
+        }
 
-      let id = records[0][q.primaryKey];
-      let k = _.findIndex(this.data[q.table], (r) => {
-        return r[q.primaryKey] === id;
+        let id = records[0][q.primaryKey];
+        let k = _.findIndex(this.data[q.table], (r) => {
+          return r[q.primaryKey] === id;
+        });
+        this.data[q.table].splice(k, 1);
+        return resolve(1);
       });
-      this.data[q.table].splice(k, 1);
-      return resolve(1);
     });
   }
 }
