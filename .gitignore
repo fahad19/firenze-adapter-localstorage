@@ -2,3 +2,4 @@
 npm-debug.log
 lib/
 coverage/
+dist/test.js

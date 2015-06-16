@@ -16,8 +16,11 @@
     "docume": "docume README.md",
     "docs": "npm run docume && npm run doctoc",
     "dist:lib": "webpack --config ./dist/firenze-adapter-memory.config.js",
+    "dist:test": "webpack --config ./dist/test.config.js",
     "uglify:lib": "uglifyjs dist/firenze-adapter-memory.js -o dist/firenze-adapter-memory.min.js",
-    "dist": "run-scripts dist:lib uglify:lib"
+    "dist": "run-scripts dist:lib uglify:lib",
+    "karma-start": "karma start karma.conf.js",
+    "karma": "run-scripts babel dist:test karma-start"
   },
   "repository": {
     "type": "git",
@@ -58,7 +61,6 @@
     "karma": "^0.12.36",
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.2.0",
-    "karma-webpack": "^1.5.1",
     "mocha": "^2.2.4",
     "node-libs-browser": "^0.5.2",
     "phantomjs": "^1.9.17",

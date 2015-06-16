@@ -1,22 +1,17 @@
+var path = require('path');
+
 module.exports = function (config) {
   config.set({
     files: [
-      'lib/test/cases/*.js',
+      'dist/test.js',
     ],
 
     frameworks: ['mocha'],
 
-    preprocessors: {
-      '*.js': ['webpack']
-    },
-
-    webpack: {
-
-    },
+    preprocessors: {},
 
     plugins: [
       'karma-mocha',
-      'karma-webpack',
       'karma-phantomjs-launcher'
     ],
 
