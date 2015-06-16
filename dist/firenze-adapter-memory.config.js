@@ -7,7 +7,7 @@ module.exports = {
     path: __dirname,
     filename: filename,
     libraryTarget: 'this',
-    library: 'FirenzeMemoryAdapter'
+    library: ['firenze', 'MemoryAdapter']
   },
   resolve: {
     extensions: [

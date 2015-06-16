@@ -1,4 +1,4 @@
-this["FirenzeMemoryAdapter"] =
+this["firenze"] = this["firenze"] || {}; this["firenze"]["MemoryAdapter"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

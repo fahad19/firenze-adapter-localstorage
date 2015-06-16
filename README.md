@@ -4,17 +4,18 @@
 
 In-memory database adapter for [firenze.js](https://github.com/fahad19/firenze)
 
-Install it with npm:
+Install it with [npm](https://npmjs.com) or [Bower](http://bower.io):
 
 ```
 $ npm install --save firenze-adapter-memory
+
+$ bower install --save firenze-adapter-memory
 ```
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 # Contents
 
-  - [Install](#install)
   - [Usage](#usage)
     - [Node.js](#nodejs)
     - [Browser](#browser)
@@ -32,7 +33,9 @@ $ npm install --save firenze-adapter-memory
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 <!--docume:src/index.js-->
-## Install
+## Usage
+
+### Node.js
 
 With [npm](https://npmjs.com):
 
@@ -40,15 +43,7 @@ With [npm](https://npmjs.com):
 $ npm install --save firenze-adapter-memory
 ```
 
-Or [Bower](http://bower.io):
-
-```
-$ bower installl --save firenze-adapter-memory
-```
-
-## Usage
-
-### Node.js
+Now you can require it as follows:
 
 ```js
 var f = require('firenze');
@@ -62,6 +57,15 @@ var db = new Database({
 
 ### Browser
 
+
+Or [Bower](http://bower.io):
+
+```
+$ bower installl --save firenze-adapter-memory
+```
+
+Can be loaded in your HTML page as follows:
+
 ```js
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/async/lib/async.js"></script>
@@ -72,8 +76,9 @@ var db = new Database({
 <script src="bower_components/firenze-adapter-memory/dist/firenze-adapter-memory.min.js"></script>
 
 <script>
+// Memory adapter is availble in `firenze.MemoryAdapter`
 var db = new firenze.Database({
-  adapter: new FirenzeMemoryAdapter()
+  adapter: new firenze.MemoryAdapter()
 });
 </script>
 ```

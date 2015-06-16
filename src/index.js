@@ -7,7 +7,9 @@ import async from 'async';
 let P = f.Promise;
 let Adapter = f.Adapter;
 
-// ## Install
+// ## Usage
+//
+// ### Node.js
 //
 // With [npm](https://npmjs.com):
 //
@@ -15,15 +17,7 @@ let Adapter = f.Adapter;
 // $ npm install --save firenze-adapter-memory
 // ```
 //
-// Or [Bower](http://bower.io):
-//
-// ```
-// $ bower installl --save firenze-adapter-memory
-// ```
-//
-// ## Usage
-//
-// ### Node.js
+// Now you can require it as follows:
 //
 // ```js
 // var f = require('firenze');
@@ -37,6 +31,15 @@ let Adapter = f.Adapter;
 //
 // ### Browser
 //
+//
+// Or [Bower](http://bower.io):
+//
+// ```
+// $ bower installl --save firenze-adapter-memory
+// ```
+//
+// Can be loaded in your HTML page as follows:
+//
 // ```js
 // <script src="bower_components/lodash/lodash.min.js"></script>
 // <script src="bower_components/async/lib/async.js"></script>
@@ -47,8 +50,9 @@ let Adapter = f.Adapter;
 // <script src="bower_components/firenze-adapter-memory/dist/firenze-adapter-memory.min.js"></script>
 //
 // <script>
+// // Memory adapter is availble in `firenze.MemoryAdapter`
 // var db = new firenze.Database({
-//   adapter: new FirenzeMemoryAdapter()
+//   adapter: new firenze.MemoryAdapter()
 // });
 // </script>
 // ```
