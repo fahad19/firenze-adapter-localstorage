@@ -78,7 +78,7 @@ Can be loaded in your HTML page as follows:
 <script>
 // Memory adapter is availble in `firenze.MemoryAdapter`
 var db = new firenze.Database({
-  adapter: new firenze.MemoryAdapter()
+  adapter: firenze.MemoryAdapter
 });
 </script>
 ```

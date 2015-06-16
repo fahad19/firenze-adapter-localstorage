@@ -52,7 +52,7 @@ let Adapter = f.Adapter;
 // <script>
 // // Memory adapter is availble in `firenze.MemoryAdapter`
 // var db = new firenze.Database({
-//   adapter: new firenze.MemoryAdapter()
+//   adapter: firenze.MemoryAdapter
 // });
 // </script>
 // ```
