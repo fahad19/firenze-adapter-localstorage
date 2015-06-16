@@ -1,6 +1,6 @@
 # firenze-adapter-memory
 
-[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-memory.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-memory)
+[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-memory.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-memory) [![Coverage Status](https://coveralls.io/repos/fahad19/firenze-adapter-memory/badge.svg?branch=master)](https://coveralls.io/r/fahad19/firenze-adapter-memory?branch=master) [![npm](https://img.shields.io/npm/v/firenze-adapter-memory.svg)](https://www.npmjs.com/package/firenze-adapter-memory)
 
 In-memory database adapter for [firenze.js](https://github.com/fahad19/firenze)
 
