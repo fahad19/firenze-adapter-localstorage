@@ -92,7 +92,7 @@ export default class Memory extends Adapter {
   }
 
   query(collection, options = {}) {
-    let opt =  _.merge(options, {
+    let opt = _.merge(options, {
       table: collection.table,
       alias: collection.model().alias,
       primaryKey: collection.model().primaryKey
