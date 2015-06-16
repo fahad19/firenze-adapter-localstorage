@@ -279,7 +279,7 @@ export default class Memory extends Adapter {
 // posts.find('all', {
 //   limit: 10,
 //   page: 2
-// })
+// });
 // ```
 //
         (records, cb) => {

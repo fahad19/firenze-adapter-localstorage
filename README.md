@@ -179,7 +179,7 @@ If you want to go through paginated results:
 posts.find('all', {
   limit: 10,
   page: 2
-})
+});
 ```
 
 ## Fields
