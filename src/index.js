@@ -14,7 +14,7 @@ let Adapter = f.Adapter;
 // With [npm](https://npmjs.com):
 //
 // ```
-// $ npm install --save firenze-adapter-memory
+// $ npm install --save firenze-adapter-localstorage
 // ```
 //
 // Now you can require it as follows:
@@ -22,10 +22,10 @@ let Adapter = f.Adapter;
 // ```js
 // var f = require('firenze');
 // var Database = f.Database;
-// var MemoryAdapter = require('firenze-adapter-memory');
+// var LocalStorageAdapter = require('firenze-adapter-localstorage');
 //
 // var db = new Database({
-//   adapter: MemoryAdapter
+//   adapter: LocalStorageAdapter
 // });
 // ```
 //
@@ -35,7 +35,7 @@ let Adapter = f.Adapter;
 // Or [Bower](http://bower.io):
 //
 // ```
-// $ bower installl --save firenze-adapter-memory
+// $ bower installl --save firenze-adapter-localstorage
 // ```
 //
 // Can be loaded in your HTML page as follows:
@@ -47,17 +47,17 @@ let Adapter = f.Adapter;
 // <script src="bower_components/validator-js/validator.min.js"></script>
 //
 // <script src="bower_components/firenze/dist/firenze.min.js"></script>
-// <script src="bower_components/firenze-adapter-memory/dist/firenze-adapter-memory.min.js"></script>
+// <script src="bower_components/firenze-adapter-localstorage/dist/firenze-adapter-localstorage.min.js"></script>
 //
 // <script>
-// // Memory adapter is availble in `firenze.MemoryAdapter`
+// // LocalStorage adapter is availble in `firenze.LocalStorageAdapter`
 // var db = new firenze.Database({
-//   adapter: firenze.MemoryAdapter
+//   adapter: firenze.LocalStorageAdapter
 // });
 // </script>
 // ```
 //
-export default class Memory extends Adapter {
+export default class LocalStorage extends Adapter {
   constructor(options) {
     super(options);
 

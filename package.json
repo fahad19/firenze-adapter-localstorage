@@ -1,7 +1,7 @@
 {
-  "name": "firenze-adapter-memory",
-  "version": "0.1.1",
-  "description": "Memory adapter for firenze.js ORM",
+  "name": "firenze-adapter-localstorage",
+  "version": "0.1.0",
+  "description": "localStorage adapter for firenze.js ORM",
   "main": "index.js",
   "scripts": {
     "babel": "babel src --out-dir lib",
@@ -15,33 +15,32 @@
     "doctoc": "doctoc README.md --github --title '# Contents'",
     "docume": "docume README.md",
     "docs": "npm run docume && npm run doctoc",
-    "dist:lib": "webpack --config ./dist/firenze-adapter-memory.config.js",
+    "dist:lib": "webpack --config ./dist/firenze-adapter-localstorage.config.js",
     "dist:test": "webpack --config ./dist/test.config.js",
-    "uglify:lib": "uglifyjs dist/firenze-adapter-memory.js -o dist/firenze-adapter-memory.min.js",
+    "uglify:lib": "uglifyjs dist/firenze-adapter-localstorage.js -o dist/firenze-adapter-localstorage.min.js",
     "dist": "run-scripts dist:lib uglify:lib",
     "karma-start": "karma start karma.conf.js",
     "karma": "run-scripts babel dist:test karma-start"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fahad19/firenze-adapter-memory.git"
+    "url": "https://github.com/fahad19/firenze-adapter-localstorage.git"
   },
   "keywords": [
     "firenze",
     "firenze-adapter",
     "firenze-plugin",
     "orm",
-    "memory",
-    "in-memory",
+    "localstorage",
     "database",
     "adapter"
   ],
   "author": "Fahad Ibnay Heylaal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fahad19/firenze-adapter-memory/issues"
+    "url": "https://github.com/fahad19/firenze-adapter-localstorage/issues"
   },
-  "homepage": "https://github.com/fahad19/firenze-adapter-memory",
+  "homepage": "https://github.com/fahad19/firenze-adapter-localstorage",
   "dependencies": {
     "async": "^1.2.1",
     "firenze": "~0.1.2",

@@ -1,19 +1,19 @@
 {
-  "name": "firenze-adapter-memory",
-  "main": "dist/firenze-adapter-memory.min.js",
+  "name": "firenze-adapter-localstorage",
+  "main": "dist/firenze-adapter-localstorage.min.js",
   "version": "0.1.1",
-  "homepage": "https://github.com/fahad19/firenze-adapter-memory",
+  "homepage": "https://github.com/fahad19/firenze-adapter-localstorage",
   "authors": [
     "Fahad Ibnay Heylaal"
   ],
-  "description": "Memory adapter for firenze.js ORM",
+  "description": "localStorage adapter for firenze.js ORM",
   "keywords": [
     "orm",
     "adapters",
     "firenze-adapter",
     "firenze-plugin",
     "database",
-    "memory"
+    "localstorage"
   ],
   "license": "MIT",
   "ignore": [

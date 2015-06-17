@@ -1,5 +1,5 @@
-var Memory = require('../index');
+var LocalStorage = require('../index');
 
 module.exports = {
-  adapter: Memory
+  adapter: LocalStorage
 };

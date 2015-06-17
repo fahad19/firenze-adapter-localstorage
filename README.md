@@ -1,15 +1,15 @@
-# firenze-adapter-memory
+# firenze-adapter-localstorage
 
-[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-memory.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-memory) [![Coverage Status](https://coveralls.io/repos/fahad19/firenze-adapter-memory/badge.svg?branch=master)](https://coveralls.io/r/fahad19/firenze-adapter-memory?branch=master) [![npm](https://img.shields.io/npm/v/firenze-adapter-memory.svg)](https://www.npmjs.com/package/firenze-adapter-memory)
+[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-localstorage.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-localstorage) [![Coverage Status](https://coveralls.io/repos/fahad19/firenze-adapter-localstorage/badge.svg?branch=master)](https://coveralls.io/r/fahad19/firenze-adapter-localstorage?branch=master) [![npm](https://img.shields.io/npm/v/firenze-adapter-localstorage.svg)](https://www.npmjs.com/package/firenze-adapter-localstorage)
 
-In-memory database adapter for [firenze.js](https://github.com/fahad19/firenze)
+localStorage database adapter for [firenze.js](https://github.com/fahad19/firenze)
 
 Install it with [npm](https://npmjs.com) or [Bower](http://bower.io):
 
 ```
-$ npm install --save firenze-adapter-memory
+$ npm install --save firenze-adapter-localstorage
 
-$ bower install --save firenze-adapter-memory
+$ bower install --save firenze-adapter-localstorage
 ```
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -40,7 +40,7 @@ $ bower install --save firenze-adapter-memory
 With [npm](https://npmjs.com):
 
 ```
-$ npm install --save firenze-adapter-memory
+$ npm install --save firenze-adapter-localstorage
 ```
 
 Now you can require it as follows:
@@ -48,10 +48,10 @@ Now you can require it as follows:
 ```js
 var f = require('firenze');
 var Database = f.Database;
-var MemoryAdapter = require('firenze-adapter-memory');
+var LocalStorageAdapter = require('firenze-adapter-localstorage');
 
 var db = new Database({
-  adapter: MemoryAdapter
+  adapter: LocalStorageAdapter
 });
 ```
 
@@ -61,7 +61,7 @@ var db = new Database({
 Or [Bower](http://bower.io):
 
 ```
-$ bower installl --save firenze-adapter-memory
+$ bower installl --save firenze-adapter-localstorage
 ```
 
 Can be loaded in your HTML page as follows:
@@ -73,12 +73,12 @@ Can be loaded in your HTML page as follows:
 <script src="bower_components/validator-js/validator.min.js"></script>
 
 <script src="bower_components/firenze/dist/firenze.min.js"></script>
-<script src="bower_components/firenze-adapter-memory/dist/firenze-adapter-memory.min.js"></script>
+<script src="bower_components/firenze-adapter-localstorage/dist/firenze-adapter-localstorage.min.js"></script>
 
 <script>
-// Memory adapter is availble in `firenze.MemoryAdapter`
+// LocalStorage adapter is availble in `firenze.LocalStorageAdapter`
 var db = new firenze.Database({
-  adapter: firenze.MemoryAdapter
+  adapter: firenze.LocalStorageAdapter
 });
 </script>
 ```
