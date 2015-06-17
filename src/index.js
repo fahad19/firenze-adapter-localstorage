@@ -132,7 +132,7 @@ export default class LocalStorage extends Adapter {
   }
 
   getLocalStorage() {
-    if (window && window.localStorage) {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       return window.localStorage;
     }
 
