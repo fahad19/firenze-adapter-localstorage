@@ -59,7 +59,6 @@ var db = new Database({
 
 ### Browser
 
-
 Or [Bower](http://bower.io):
 
 ```

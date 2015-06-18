@@ -53,7 +53,6 @@ class FakeStore {
 //
 // ### Browser
 //
-//
 // Or [Bower](http://bower.io):
 //
 // ```
