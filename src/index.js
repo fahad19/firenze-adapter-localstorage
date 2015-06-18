@@ -14,7 +14,12 @@ class FakeStore {
   }
 
   getItem(key) {
-    return this.store[key];
+    let value = this.store[key];
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    return '[]';
   }
 
   setItem(key, value) {
@@ -79,6 +84,7 @@ export default class LocalStorage extends Adapter {
     this.options = options;
     this.data = {};
     this.lsPrefix = 'firenze_';
+    this.store = this.getLocalStorage();
   }
 
   getConnection() {
@@ -93,20 +99,24 @@ export default class LocalStorage extends Adapter {
   }
 
   dropTable(model) {
-    this.data = _.omit(this.data, model.collection().table);
-    this.writeToLs();
+    let table = model.collection().table;
+    this.data = _.omit(this.data, table);
+    this.writeToStore(table);
     return new P.resolve(true);
   }
 
   createTable(model) {
-    this.data[model.collection().table] = [];
-    this.writeToLs();
+    let table = model.collection().table;
+    this.data[table] = [];
+    this.writeToStore(table);
     return new P.resolve(true);
   }
 
   populateTable(model, rows) {
-    this.data[model.collection().table] = rows;
-    this.writeToLs();
+    let table = model.collection().table;
+    this.data[table] = rows;
+    this.writeToStore(table);
+
     return new P.resolve(true);
   }
 
@@ -139,9 +149,9 @@ export default class LocalStorage extends Adapter {
     return new FakeStore();
   }
 
-  fetchFromLs(table) {
+  fetchFromStore(table) {
     let key = this.lsPrefix + table;
-    let store = this.getLocalStorage().getItem(key);
+    let store = this.store.getItem(key);
     let tableData = [];
     if (store) {
       tableData = JSON.parse(store);
@@ -150,20 +160,20 @@ export default class LocalStorage extends Adapter {
     this.data[table] = tableData;
   }
 
-  writeToLs(table) {
+  writeToStore(table) {
     let key = this.lsPrefix + table;
-    return this.getLocalStorage().setItem(key, JSON.stringify(this.data[table]));
+    return this.store.setItem(key, JSON.stringify(this.data[table]));
   }
 
   create(q, obj) {
     obj[q.primaryKey] = _.uniqueId();
     this.data[q.table].push(obj);
-    this.writeToLs();
+    this.writeToStore(q.table);
     return new P.resolve(obj);
   }
 
   read(q) {
-    this.fetchFromLs();
+    this.fetchFromStore(q.table);
     return new P.resolve(q);
   }
 
@@ -398,7 +408,7 @@ export default class LocalStorage extends Adapter {
           return r[q.primaryKey] === id;
         });
         this.data[q.table][k] = _.merge(this.data[q.table][k], obj);
-        this.writeToLs();
+        this.writeToStore(q.table);
         return resolve(this.data[q.table][k]);
       });
     });
@@ -416,7 +426,7 @@ export default class LocalStorage extends Adapter {
           return r[q.primaryKey] === id;
         });
         this.data[q.table].splice(k, 1);
-        this.writeToLs();
+        this.writeToStore(q.table);
         return resolve(1);
       });
     });
