@@ -29,7 +29,9 @@ class FakeStore {
 
 // ## Usage
 //
-// ### Node.js
+// ### CommonJS
+//
+// Useful if you have a CommonJS build set up, like Browserify or Webpack.
 //
 // With [npm](https://npmjs.com):
 //
