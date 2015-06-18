@@ -1,7 +1,7 @@
 {
   "name": "firenze-adapter-localstorage",
   "main": "dist/firenze-adapter-localstorage.min.js",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/fahad19/firenze-adapter-localstorage",
   "authors": [
     "Fahad Ibnay Heylaal"
