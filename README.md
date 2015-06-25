@@ -1,6 +1,6 @@
 # firenze-adapter-localstorage
 
-[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-localstorage.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-localstorage) [![Coverage Status](https://coveralls.io/repos/fahad19/firenze-adapter-localstorage/badge.svg?branch=master)](https://coveralls.io/r/fahad19/firenze-adapter-localstorage?branch=master) [![npm](https://img.shields.io/npm/v/firenze-adapter-localstorage.svg)](https://www.npmjs.com/package/firenze-adapter-localstorage)
+[![Build Status](https://secure.travis-ci.org/fahad19/firenze-adapter-localstorage.png?branch=master)](http://travis-ci.org/fahad19/firenze-adapter-localstorage) [![Coverage Status](https://coveralls.io/repos/fahad19/firenze-adapter-localstorage/badge.svg?branch=master)](https://coveralls.io/r/fahad19/firenze-adapter-localstorage?branch=master) [![npm](https://img.shields.io/npm/v/firenze-adapter-localstorage.svg)](https://www.npmjs.com/package/firenze-adapter-localstorage) [![Join the chat at https://gitter.im/fahad19/firenze](https://img.shields.io/badge/gitter-join_chat_%E2%86%92-1dce73.svg)](https://gitter.im/fahad19/firenze)
 
 localStorage database adapter for [firenze.js](https://github.com/fahad19/firenze)
 
