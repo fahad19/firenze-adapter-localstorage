@@ -1,7 +1,7 @@
 {
   "name": "firenze-adapter-memory",
   "main": "dist/firenze-adapter-memory.min.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/fahad19/firenze-adapter-memory",
   "authors": [
     "Fahad Ibnay Heylaal"
