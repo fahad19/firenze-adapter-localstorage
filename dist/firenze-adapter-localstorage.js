@@ -54,7 +54,7 @@ this["firenze"] = this["firenze"] || {}; this["firenze"]["LocalStorageAdapter"] 
 	  value: true
 	});
 
-	var _get = function get(_x3, _x4, _x5) { var _again = true; _function: while (_again) { var object = _x3, property = _x4, receiver = _x5; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x3 = parent; _x4 = property; _x5 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -110,7 +110,9 @@ this["firenze"] = this["firenze"] || {}; this["firenze"]["LocalStorageAdapter"] 
 
 	// ## Usage
 	//
-	// ### Node.js
+	// ### CommonJS
+	//
+	// Useful if you have a CommonJS build set up, like Browserify or Webpack.
 	//
 	// With [npm](https://npmjs.com):
 	//
@@ -131,7 +133,6 @@ this["firenze"] = this["firenze"] || {}; this["firenze"]["LocalStorageAdapter"] 
 	// ```
 	//
 	// ### Browser
-	//
 	//
 	// Or [Bower](http://bower.io):
 	//
@@ -181,36 +182,30 @@ this["firenze"] = this["firenze"] || {}; this["firenze"]["LocalStorageAdapter"] 
 	  }, {
 	    key: 'closeConnection',
 	    value: function closeConnection() {
-	      var cb = arguments[0] === undefined ? null : arguments[0];
-
-	      if (!cb) {
-	        cb = function () {};
-	      }
-	      return cb();
+	      return new P.resolve(true);
 	    }
 	  }, {
 	    key: 'dropTable',
-	    value: function dropTable(model) {
-	      var table = model.collection().table;
+	    value: function dropTable(collection) {
+	      var table = collection.table;
 	      this.data = _lodash2['default'].omit(this.data, table);
 	      this.writeToStore(table);
 	      return new P.resolve(true);
 	    }
 	  }, {
 	    key: 'createTable',
-	    value: function createTable(model) {
-	      var table = model.collection().table;
+	    value: function createTable(collection) {
+	      var table = collection.table;
 	      this.data[table] = [];
 	      this.writeToStore(table);
 	      return new P.resolve(true);
 	    }
 	  }, {
 	    key: 'populateTable',
-	    value: function populateTable(model, rows) {
-	      var table = model.collection().table;
+	    value: function populateTable(collection, rows) {
+	      var table = collection.table;
 	      this.data[table] = rows;
 	      this.writeToStore(table);
-
 	      return new P.resolve(true);
 	    }
 	  }, {
@@ -222,8 +217,8 @@ this["firenze"] = this["firenze"] || {}; this["firenze"]["LocalStorageAdapter"] 
 
 	      var opt = _lodash2['default'].merge(options, {
 	        table: collection.table,
-	        alias: collection.model().alias,
-	        primaryKey: collection.model().primaryKey
+	        alias: collection.alias,
+	        primaryKey: collection.primaryKey
 	      });
 
 	      var promise = new P(function (resolve, reject) {
