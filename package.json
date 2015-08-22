@@ -46,10 +46,10 @@
     "lodash": "~3.7.0"
   },
   "peerDependencies": {
-    "firenze": "~0.1.4"
+    "firenze": "~0.2.1"
   },
   "devDependencies": {
-    "firenze": "~0.1.4",
+    "firenze": "~0.2.1",
     "babel": "^5.1.10",
     "babel-eslint": "^3.0.1",
     "coveralls": "^2.11.2",

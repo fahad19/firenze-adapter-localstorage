@@ -92,40 +92,36 @@ export default class LocalStorage extends Adapter {
     return this.data;
   }
 
-  closeConnection(cb = null) {
-    if (!cb) {
-      cb = function () { };
-    }
-    return cb();
+  closeConnection() {
+    return new P.resolve(true);
   }
 
-  dropTable(model) {
-    let table = model.collection().table;
+  dropTable(collection) {
+    let table = collection.table;
     this.data = _.omit(this.data, table);
     this.writeToStore(table);
     return new P.resolve(true);
   }
 
-  createTable(model) {
-    let table = model.collection().table;
+  createTable(collection) {
+    let table = collection.table;
     this.data[table] = [];
     this.writeToStore(table);
     return new P.resolve(true);
   }
 
-  populateTable(model, rows) {
-    let table = model.collection().table;
+  populateTable(collection, rows) {
+    let table = collection.table;
     this.data[table] = rows;
     this.writeToStore(table);
-
     return new P.resolve(true);
   }
 
   query(collection, options = {}) {
     let opt = _.merge(options, {
       table: collection.table,
-      alias: collection.model().alias,
-      primaryKey: collection.model().primaryKey
+      alias: collection.alias,
+      primaryKey: collection.primaryKey
     });
 
     let promise = new P((resolve, reject) => {
